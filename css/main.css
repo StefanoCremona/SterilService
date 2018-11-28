@@ -1,0 +1,50 @@
+body {
+}
+h1 {
+    color: blue;
+}
+p {
+    color: red;
+}
+* {
+    font-family: courier;
+}
+.listContainer {
+    display: flex;
+}
+.listTitleBar {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    background-color: aliceblue;
+}
+.listContainer .idColumn {
+    display: flex;
+    flex: 0.25;
+    justify-content: center;
+    border: 1px solid white;
+}
+.listContainer .nameColumn {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    border: 1px solid white;
+}
+.listContainer .typeColumn {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    border: 1px solid white;
+}
+.listContainer .dateColumn {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    border: 1px solid white;
+}
+.listContainer .traysColumn {
+    display: flex;
+    flex: 0.25;
+    justify-content: center;
+    border: 1px solid white;
+}
