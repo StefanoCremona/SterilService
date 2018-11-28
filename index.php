@@ -12,5 +12,6 @@
     <div>Password:</div><div><input type='text'/></div>
 </div>
 <div><input type='submit' /></div>
+</form>
 </body>
 </html>
