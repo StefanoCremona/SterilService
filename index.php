@@ -4,14 +4,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<form type='post' action='operationList.php'>
-<div>
-    <div>Login:</div><div><input type='text'/></div>
-</div>
-<div>
-    <div>Password:</div><div><input type='text'/></div>
-</div>
-<div><input type='submit' /></div>
-</form>
+    <p><a href='login.php'>Login</a></p>
+    <p><a href='operationList.php'>Operations</a></p>
+    <p><a href='trayHistory.php'>Trays</a></p>
 </body>
 </html>
