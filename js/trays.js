@@ -25,17 +25,18 @@ function loadTrays() {
     //populateList([0, 1, 2, 3])
 }
 
-function populateList(operations) {
+function populateList(trays) {
     var rows = '';
-    operations.forEach(function (operation, index) {
+    trays.forEach(function (tray, index) {
         var color = index % 2 === 0 ? 'odd' : null;
         rows +=
             `<a href='#' class='listRow ${color}'>`+
-                `<div class='idColumn'>${operation.id}</div>`+
-                `<div class='typeColumn'>${operation.type}</div>`+
-                `<div class='idColumn'>${operation.surgey.id}</div>`+
-                `<div class='dateColumn'>${operation.date}</div>`+
-                `<div class='statusColumn'>${operation.status.desc}</div>`+
+                `<div class='idColumn'>${tray.id}</div>`+
+                `<div class='typeColumn'>${tray.type}</div>`+
+                `<div class='idColumn'>${tray.operationId}</div>`+
+                `<div class='typeColumn'>${tray.operationType}</div>`+
+                `<div class='dateColumn'>${tray.date}</div>`+
+                `<div class='statusColumn'>${tray.trayStatus}</div>`+
             "</a>";
     });
     document.getElementById("trayListDataContainer").innerHTML = rows;

@@ -6,13 +6,13 @@
     <script src="./js/trays.js"></script>
 </head>
 <body onload="loadTrays()">
-Operations List
+Tray History
     <div class='listContainer'>
         <div class='listRow header' >
             <div class='idColumn'>ID</div>
-            <div class='nameColumn'>Type</div>
-            <div class='idColumn'>Surgery ID</div>
-            <div class='typeColumn'>Surgery Type</div>
+            <div class='typeColumn'>Type</div>
+            <div class='idColumn'>Op. ID</div>
+            <div class='typeColumn'>Op. Type</div>
             <div class='dateColumn'>Date</div>
             <div class='statusColumn'>Status</div>
         </div>

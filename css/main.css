@@ -50,36 +50,42 @@ a:active {
     display: flex;
     flex: 0.25;
     justify-content: center;
+    align-items: 'center';
     border: 1px solid white;
 }
 .listContainer .nameColumn {
     display: flex;
     flex: 1;
     justify-content: center;
+    align-items: 'center';
     border: 1px solid white;
 }
 .listContainer .typeColumn {
     display: flex;
     flex: 1;
     justify-content: center;
+    align-items: 'center';
     border: 1px solid white;
 }
 .listContainer .dateColumn {
     display: flex;
     flex: 1;
     justify-content: center;
+    align-items: 'center';
     border: 1px solid white;
 }
 .listContainer .traysColumn {
     display: flex;
     flex: 0.25;
     justify-content: center;
+    align-items: 'center';
     border: 1px solid white;
 }
 .listContainer .statusColumn {
     display: flex;
     flex: 0.5;
     justify-content: center;
+    align-items: 'center';
     border: 1px solid white;
 }
 
