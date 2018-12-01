@@ -1,35 +1,3 @@
-body {
-}
-h1 {
-    color: blue;
-}
-p {
-    color: red;
-}
-/* unvisited link */
-a:link {
-    text-decoration: none;
-    color:#000000;
-}
-
-/* visited link */
-a:visited {
-    color:#000000;
-}
-
-/* mouse over link */
-a:hover {
-    color:#000000;
-    background-color: beige;
-}
-
-/* selected link */
-a:active {
-    color:#000000;
-}
-* {
-    font-family: courier;
-}
 .listContainer {
     display: flex;
     flex-direction: column
@@ -73,12 +41,6 @@ a:active {
 .listContainer .traysColumn {
     display: flex;
     flex: 0.25;
-    justify-content: center;
-    border: 1px solid white;
-}
-.listContainer .statusColumn {
-    display: flex;
-    flex: 0.5;
     justify-content: center;
     border: 1px solid white;
 }
