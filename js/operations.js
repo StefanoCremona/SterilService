@@ -19,7 +19,7 @@ function loadOperations() {
                 }
             }
         }
-        xmlhttp.open("GET", "getOperations.php", true);
+        xmlhttp.open("GET", "./json/getOperations.php", true);
         xmlhttp.send();
     //}
     //populateList([0, 1, 2, 3])
@@ -39,4 +39,34 @@ function populateList(operations) {
             "</a>";
     });
     document.getElementById("listDataContainer").innerHTML = rows;
+}
+
+function loadOperationTypes() {
+     var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+                switch (this.status) {
+                    case 200:
+                        //document.getElementById("txtHint").innerHTML = this.responseText;
+                        populateOperationTypesList(JSON.parse(this.responseText));
+                        break;
+                    case 403:
+                    case 404:
+                    case 500:
+                    default:
+                        console.log('Error');
+                }
+            }
+        }
+        xmlhttp.open("GET", "./json/getOperationTypes.php", true);
+        xmlhttp.send();
+}
+
+
+function populateOperationTypesList(operations) {
+    var rows = `<option value="null" selected></option>`;
+    operations.forEach(function (operation, index) {
+        rows += `<option value="${operation.id}">${operation.name}</option>`;
+    });
+    document.getElementById("listOperartionType").innerHTML = rows;
 }

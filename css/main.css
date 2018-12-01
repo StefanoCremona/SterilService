@@ -97,3 +97,17 @@ a:active {
 .listDataRow {
     background-color: azure
 }
+.horizontalAlign {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+}
+.flex1 {
+    display: flex;
+    flex: 1;
+}
+.itemsCentered {
+    display: flex;
+    justify-content: center;
+    align-items: 'center';
+}

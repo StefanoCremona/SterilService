@@ -19,6 +19,10 @@ class Operation
         $this->trays = $trays;
     }
     
+    function setTrays() {
+        
+    }
+    
     public $id;
     public $name;
     public $type;
