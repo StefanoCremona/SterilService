@@ -25,6 +25,15 @@ function loadOperations() {
     //populateList([0, 1, 2, 3])
 }
 
+function showSpinner() {
+    document.getElementById("spinner").style.visibility = "visible";
+}
+function hideSpinner() {
+    setTimeout(function() {
+        document.getElementById("spinner").style.visibility = "hidden";
+    }, 500);
+}
+
 function populateList(operations) {
     var rows = '';
     operations.forEach(function (operation, index) {
@@ -39,6 +48,7 @@ function populateList(operations) {
             "</a>";
     });
     document.getElementById("listDataContainer").innerHTML = rows;
+    hideSpinner();
 }
 
 function loadOperationTypes() {
