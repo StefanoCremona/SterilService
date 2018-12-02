@@ -80,3 +80,27 @@ function populateOperationTypesList(operations) {
     });
     document.getElementById("listOperartionType").innerHTML = rows;
 }
+
+function saveOperation() {
+   showSpinner()
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            switch (this.status) {
+                case 200:
+                    var response = JSON.parse(this.responseText);
+                    loadOperations();
+                    alert(response.message);
+                    break;
+                case 403:
+                case 404:
+                case 500:
+                default:
+                    console.log('Error');
+            }
+        }
+    }
+    xmlhttp.open("POST", "./json/saveOperation.php", true);
+    xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xmlhttp.send("name=Henry&type=1&date='10/12/2019'");
+}

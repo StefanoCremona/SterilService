@@ -44,7 +44,7 @@
                 <input  class='flex05' type="time" id='operationTime' />
             </div>
             <div class='typeColumn'>
-                <input class='flex1 itemsCentered' type='submit' value='SEND' onClick='showSpinner();hideSpinner()'>
+                <input class='flex1 itemsCentered' type='submit' value='SEND' onClick='saveOperation()'>
             </div>
         </div>
     </div>
