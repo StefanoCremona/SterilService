@@ -1,3 +1,9 @@
+document.addEventListener('DOMContentLoaded', function(){ 
+    document.getElementById("saveOperationButton").addEventListener("click", saveOperation);
+    loadOperations();
+    loadOperationTypes();
+}, false)
+
 function loadOperations() {
    /* if (str.length == 0) { 
         document.getElementById("txtHint").innerHTML = "";

@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="./css/main.css">
     <script src="./js/operations.js"></script>
 </head>
-<body onload="loadOperations();loadOperationTypes();">
+<body>
     <div id='spinner' class='itemsCentered' style="position: absolute; width: 100%; height: 100%; visibility: visible">
         <div class="loader"></div>
     </div>
@@ -44,7 +44,7 @@
                 <input  class='flex05' type="time" id='operationTime' />
             </div>
             <div class='typeColumn'>
-                <input class='flex1 itemsCentered' type='submit' value='SEND' onClick='saveOperation()'>
+                <input class='flex1 itemsCentered' type='submit' value='SEND' id="saveOperationButton" >
             </div>
         </div>
     </div>
