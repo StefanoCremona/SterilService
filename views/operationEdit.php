@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/main.css">
-    <script src="./js/operation.js"></script>
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/operation.js"></script>
 </head>
 <body>
     <div id='spinner' class='itemsCentered' style="position: absolute; width: 100%; height: 100%; visibility: visible">

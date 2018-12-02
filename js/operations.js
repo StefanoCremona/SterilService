@@ -45,7 +45,7 @@ function populateList(operations) {
     operations.forEach(function (operation, index) {
         var color = index % 2 === 0 ? 'odd' : null;
         rows +=
-            '<form id="form'+operation.id+'" method="POST" action="operationEdit.php">'+
+            '<form id="form'+operation.id+'" method="POST" action="views/operationEdit.php">'+
                 `<a href='#' onclick='form${operation.id}.submit()' class='listRow ${color}'>`+
                     `<div class='idColumn'>${operation.id}</div>`+
                     `<div class='nameColumn'>${operation.name}</div>`+
