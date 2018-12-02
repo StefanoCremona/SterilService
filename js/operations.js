@@ -45,13 +45,19 @@ function populateList(operations) {
     operations.forEach(function (operation, index) {
         var color = index % 2 === 0 ? 'odd' : null;
         rows +=
-            `<a href='#' class='listRow ${color}'>`+
-                `<div class='idColumn'>${operation.id}</div>`+
-                `<div class='nameColumn'>${operation.name}</div>`+
-                `<div class='typeColumn'>${operation.type}</div>`+
-                `<div class='dateColumn'>${operation.date}</div>`+
-                `<div class='traysColumn'>${operation.trays}</div>`+
-            "</a>";
+            '<form id="form'+operation.id+'" method="POST" action="operationEdit.php">'+
+                `<a href='#' onclick='form${operation.id}.submit()' class='listRow ${color}'>`+
+                    `<div class='idColumn'>${operation.id}</div>`+
+                    `<div class='nameColumn'>${operation.name}</div>`+
+                    `<div class='typeColumn'>${operation.type}</div>`+
+                    `<div class='dateColumn'>${operation.date}</div>`+
+                    `<div class='traysColumn'>${operation.trays}</div>`+
+                "</a>"+
+            `<input type='hidden' name='operationId' value='${operation.id}'/>`+
+            `<input type='hidden' name='operationName' value='${operation.name}'/>`+
+            `<input type='hidden' name='operationType' value='${operation.type}'/>`+
+            `<input type='hidden' name='operationDate' value='${operation.date}'/>`+
+            '</form>';
     });
     document.getElementById("listDataContainer").innerHTML = rows;
     hideSpinner();
