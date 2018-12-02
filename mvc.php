@@ -5,6 +5,7 @@
 //}
 include('views/BasicView.php');
 include 'views/ErrorView.php';
+include 'views/LoginView.php';
 
 include('models/BasicModel.php');
 
@@ -23,7 +24,7 @@ class Controller
 
 $model = new BasicModel();
 $controller = new Controller($model);
-$view = new BasicView($controller, $model);//here is the login
+$view = new LoginView($controller, $model);//here is the login
 
 if (isset($_GET['action']) && !empty($_GET['action'])) {
 
