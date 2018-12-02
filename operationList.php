@@ -33,10 +33,10 @@
     <div class='listContainer'>
         <div class='horizontalAlign' >
             <div class='nameColumn'>
-                <input class='flex1' type="text" />
+                <input class='flex1' type="text" id="operationName"/>
             </div>
             <div class='typeColumn'>
-                <select  class='flex1' id='listOperartionType'>
+                <select  class='flex1' id="operationType">
                 </select>
             </div>
             <div class='dateColumn'>

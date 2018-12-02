@@ -80,15 +80,26 @@ function loadOperationTypes() {
 
 
 function populateOperationTypesList(operations) {
-    var rows = `<option value="null" selected></option>`;
+    var rows = `<option value="-1" selected></option>`;
     operations.forEach(function (operation, index) {
         rows += `<option value="${operation.id}">${operation.name}</option>`;
     });
-    document.getElementById("listOperartionType").innerHTML = rows;
+    document.getElementById("operationType").innerHTML = rows;
 }
 
 function saveOperation() {
-   showSpinner()
+    const name = document.getElementById('operationName').value;
+    const date = document.getElementById('operationDate').value;
+    const time = document.getElementById('operationTime').value;
+    
+    var selector = document.getElementById('operationType');
+    var type = selector[selector.selectedIndex].value;
+    //alert(time); return;
+    if (!name || type < 0 || !date || !time) {
+        alert('Fill all the fields, Please!');
+        return;    
+    }
+    showSpinner()
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4) {
@@ -108,5 +119,5 @@ function saveOperation() {
     }
     xmlhttp.open("POST", "./json/saveOperation.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("name=Henry&type=1&date='10/12/2019'");
+    xmlhttp.send("name="+name+"&type="+type+"&date="+date+" "+time);
 }
