@@ -4,7 +4,7 @@
 <meta name='viewport' content='width=device-width, initial-scale=1.0'>
 </head>
 <body>
-<form type='post' action='operationList.php'>
+<form method='post' action='operationList.php'>
 <div>
     <div>Login:</div><div><input type='text'/></div>
 </div>

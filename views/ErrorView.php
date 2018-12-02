@@ -1,4 +1,6 @@
 <?php
+include_once 'View.php';
+
 class ErrorView implements View
 {
 

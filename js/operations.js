@@ -45,7 +45,7 @@ function populateList(operations) {
     operations.forEach(function (operation, index) {
         var color = index % 2 === 0 ? 'odd' : null;
         rows +=
-            '<form id="form'+operation.id+'" method="POST" action="views/operationEdit.php">'+
+            '<form id="form'+operation.id+'" method="POST" action="operationEdit.php">'+
                 `<a href='#' onclick='form${operation.id}.submit()' class='listRow ${color}'>`+
                     `<div class='idColumn'>${operation.id}</div>`+
                     `<div class='nameColumn'>${operation.name}</div>`+
@@ -57,6 +57,7 @@ function populateList(operations) {
             `<input type='hidden' name='operationName' value='${operation.name}'/>`+
             `<input type='hidden' name='operationType' value='${operation.type}'/>`+
             `<input type='hidden' name='operationDate' value='${operation.date}'/>`+
+            `<input type='hidden' name='action' value='operationShow'/>`+
             '</form>';
     });
     document.getElementById("listDataContainer").innerHTML = rows;

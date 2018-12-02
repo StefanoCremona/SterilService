@@ -1,7 +1,7 @@
 <?php
 include_once 'View.php';
 
-class LoginView implements View
+class OperationsListView implements View
 {
     private $model;
     private $controller;
@@ -12,9 +12,9 @@ class LoginView implements View
     }
 
     public function output() {
-        $login = file_get_contents('login.php');
+        $view = file_get_contents('operationList.php');
         //echo $homepage;
-        return $login;
+        return $view;
     }
 }
 ?>
