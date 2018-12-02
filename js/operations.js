@@ -105,9 +105,15 @@ function saveOperation() {
         if (this.readyState == 4) {
             switch (this.status) {
                 case 200:
-                    var response = JSON.parse(this.responseText);
-                    loadOperations();
-                    alert(response.message);
+                    try {
+                        var response = JSON.parse(this.responseText);
+                        loadOperations();
+                        alert(response.message);
+                        response.success && document.getElementById("operationForm").reset();
+                    } catch (error) {
+                        alert(error);
+                    }
+                    
                     break;
                 case 403:
                 case 404:

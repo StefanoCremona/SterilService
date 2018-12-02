@@ -31,6 +31,7 @@
         </div>
     </div>
     <div class='listContainer'>
+        <form id="operationForm">
         <div class='horizontalAlign' >
             <div class='nameColumn'>
                 <input class='flex1' type="text" id="operationName"/>
@@ -44,9 +45,10 @@
                 <input  class='flex05' type="time" id='operationTime' />
             </div>
             <div class='typeColumn'>
-                <input class='flex1 itemsCentered' type='submit' value='SEND' id="saveOperationButton" >
+                <input class='flex1 itemsCentered' type='button' value='SEND' id="saveOperationButton" >
             </div>
         </div>
+        </form>
     </div>
 </body>
 </html>
