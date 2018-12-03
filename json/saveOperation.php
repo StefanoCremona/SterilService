@@ -1,6 +1,6 @@
 <?php
 include '../dbUtils/dbConnection.php';
-include '../utils/Message.php';
+include_once '../utils/Message.php';
 
 if (!isset($_POST['name']) || !isset($_POST['type']) || !isset($_POST['date'])) {
     echo json_encode(new Message(false, 'Input not set properly!'));

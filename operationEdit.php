@@ -7,6 +7,9 @@ include 'views/ErrorView.php';
 include 'views/OperationEditView.php';
 include 'models/operation.php';
 
+require_once '/home/sc1984h/public_html/SterilService/dbUtils/dbConnection.php';
+require_once '/home/sc1984h/public_html/SterilService/models/TrayType.php';
+
 class Controller
 {
     private $model;
@@ -16,6 +19,7 @@ class Controller
     }
 
     public function operationShow() {
+        $this->model->expectedTrays = $this->model->getExpectedTrays();
         //return new OperationsListView($this, $model);
     }
 }

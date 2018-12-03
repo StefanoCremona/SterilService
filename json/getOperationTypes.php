@@ -1,6 +1,6 @@
 <?php
 include '../models/operationType.php';
-include '../dbUtils/dbConnection.php';
+include_once '../dbUtils/dbConnection.php';
 
 $myDbHelper = new DBHelper();
 $conn = $myDbHelper->getConnection();
