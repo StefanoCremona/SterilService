@@ -28,7 +28,7 @@ class Operation
         $conn = $myDbHelper->getConnection();
 
         $sql = "SELECT tray_type.ID, tray_type.CODE, tray_type.NAME, TRAY_NUM 
-        FROM `procedure_conf`, `tray_type` WHERE procedure_conf.TRAY_TYPE = tray_type.ID and procedure_type = 1";
+        FROM `procedure_conf`, `tray_type` WHERE procedure_conf.TRAY_TYPE = tray_type.ID and procedure_type = ".$this->type;
         $result = mysqli_query($conn, $sql);
         $arr = array();
         if (mysqli_num_rows($result) > 0) {
