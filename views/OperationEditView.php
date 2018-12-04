@@ -26,6 +26,7 @@ class OperationEditView implements View
                             <div class='nameColumn'>Code</div>
                             <div class='nameColumn'>Name</div>
                             <div class='nameColumn'>Num</div>
+                            <div class='nameColumn'>Actions</div>
                         </div>
                     </div>
             ";
@@ -35,9 +36,39 @@ class OperationEditView implements View
                     <div class='nameColumn'>".$trayType->code."</div>
                     <div class='nameColumn'>".$trayType->name."</div>
                     <div class='nameColumn'>".$trayType->num."</div>
+                    <div class='nameColumn'>
+                        <form method='POST' action='operationEdit.php'>
+                            <input type='hidden' value='trayAdd' id='action' name='action' />
+                            <input placeholder='YOUR TRAY ID' type='text' id='trayId'/>
+                            <input type='submit' value='Associate Tray'/>
+                        </form>
+                    </div>
                 </div>";
             }
             $expectedTrays.="</div>";
+        }
+        $actualTrays = "";
+        if(count($this->model->trays)>0) {
+            $actualTrays .= "
+                <h3 class='flex1 itemsCentered'>Actual Trays</h3>
+                <div class='listContainer'>
+                    <div class='listContainer'>
+                        <div class='listRow header' >
+                            <div class='nameColumn'>ID</div>
+                            <div class='nameColumn'>Original ID</div>
+                            <div class='nameColumn'>Tray Type</div>
+                        </div>
+                    </div>
+            ";
+            foreach ($this->model->trays as $tray) {
+                # code...
+                $actualTrays.= "<div class='listRow odd' >
+                    <div class='nameColumn'>".$tray->id."</div>
+                    <div class='nameColumn'>".$tray->originalId."</div>
+                    <div class='nameColumn'>".$tray->typeId."</div>
+                </div>";
+            }
+            $actualTrays.="</div>";
         }
         
         echo "
@@ -48,7 +79,7 @@ class OperationEditView implements View
                 <link rel='stylesheet' href='./css/main.css'>
                 <script src='./js/operation.js'></script>
             </head>
-            <body>
+            <body onload='hideSpinner()'>
                 <div id='spinner' class='itemsCentered' style='position: absolute; width: 100%; height: 100%; visibility: visible'>
                     <div class='loader'></div>
                 </div>
@@ -69,7 +100,7 @@ class OperationEditView implements View
                         </div>
                     </div>
                 </div>
-                ".$expectedTrays."
+                ".$expectedTrays.$actualTrays."
             </body>
             </html>
         ";

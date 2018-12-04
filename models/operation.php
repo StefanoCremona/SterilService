@@ -1,7 +1,8 @@
 <?php
 //These paths depend on the caller path. Be careful.
-include_once './TrayType.php';
-include_once '../dbUtils/dbConnection.php';
+include_once './models/TrayType.php';
+include_once './models/Tray.php';
+include_once './dbUtils/dbConnection.php';
 
 class Operation
 {
@@ -44,8 +45,29 @@ class Operation
 
         return $arr;
     }
+
+    function getTrays() {
+        $myDbHelper = new DBHelper();
+        $conn = $myDbHelper->getConnection();
+
+        $sql = "SELECT * FROM `tray` WHERE tray.procedure = ".$this->id;
+        $result = mysqli_query($conn, $sql);
+        $arr = array();
+        if (mysqli_num_rows($result) > 0) {
+            // output data of each row
+            while($row = mysqli_fetch_assoc($result)) {
+                $tray = new Tray($row["ID"], $row["ORIGINAL_ID"], $row["PROCEDURE"], $row["TRAY_TYPE"]);
+                array_push($arr, $tray);
+            }
+        }
+
+        $myDbHelper->closeConnection();
+
+        return $arr;
+    }
     
     public $id;
+    public $originalId;
     public $name;
     public $type;
     public $date;
