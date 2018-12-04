@@ -16,22 +16,74 @@ class OperationEditView implements View
         //$view = file_get_contents('./views/OperationEditRender.php');
         //echo $view;
         //return json_encode($this->model);
+        
+        $actualTrays .= "
+                <h3 class='flex1 itemsCentered'>Actual Trays</h3>
+                <div class='listContainer'>
+                    <div class='listContainer'>
+                        <div class='listRow header' >
+                            <div class='nameColumn'>ID</div>
+                            <div class='nameColumn'>Original ID</div>
+                            <div class='nameColumn'>Tray Type</div>
+                        </div>
+                    </div>
+            ";
+        //Clone the expected tray set;
+        $expectedTraysFiltered = array();
+        if (property_exists($this->model, 'expectedTrays')) {
+            foreach ($this->model->expectedTrays as $expTray) {
+                array_push($expectedTraysFiltered, clone $expTray);
+            }
+        }
+
+        if(count($this->model->trays)>0) {
+            
+            foreach ($this->model->trays as $tray) {
+                //Remove the suggested tray which  matches the actual one
+                foreach ($expectedTraysFiltered as $key => $expTray) {
+                    //echo $tray->type."-".$expTray->id; 
+                    if ($tray->typeId == $expTray->id) {
+                        if ($expTray->num > 1) {
+                            $expTray->num--;
+                        } else {
+                            array_splice($expectedTraysFiltered, $key, 1);
+                        }
+                        break;
+                    }
+                }
+                # code...
+                $actualTrays.= "<div class='listRow odd' >
+                    <div class='nameColumn'>".$tray->id."</div>
+                    <div class='nameColumn'>".$tray->originalId."</div>
+                    <div class='nameColumn'>".$tray->typeId."</div>
+                </div>";
+            }
+            $actualTrays.="</div>";
+        } else {
+            $actualTrays.="<div class='listContainer'>
+                        <div class='flex1 itemsCentered'>No trays on the system for the provided operation!</div>
+                    </div>
+                ";
+        }
+
         $expectedTrays .= "
                 <h3 class='flex1 itemsCentered'>Expected Trays</h3>
                 <div class='listContainer'>
                     <div class='listContainer'>
                         <div class='listRow header' >
+                            <div class='idColumn'>ID</div>
                             <div class='nameColumn'>Code</div>
                             <div class='nameColumn'>Name</div>
-                            <div class='nameColumn'>Num</div>
+                            <div class='nameColumn'>Quantity</div>
                             <div class='nameColumn'>Actions</div>
                         </div>
                     </div>
             ";
-        if (property_exists($this->model, 'expectedTrays') && count($this->model->expectedTrays)>0) {
-            foreach ($this->model->expectedTrays as $trayType) {
+        if (count($expectedTraysFiltered)>0) {
+            foreach ($expectedTraysFiltered as $trayType) {
                 # code...
                 $expectedTrays.= "<div class='listRow odd' >
+                    <div class='idColumn'>".$trayType->id."</div>
                     <div class='nameColumn'>".$trayType->code."</div>
                     <div class='nameColumn'>".$trayType->name."</div>
                     <div class='nameColumn'>".$trayType->num."</div>
@@ -48,35 +100,6 @@ class OperationEditView implements View
         } else {
             $expectedTrays.="<div class='listContainer'>
                         <div class='flex1 itemsCentered'>No trays configuration on the system for the provided operation or you provided all the expected trays!</div>
-                    </div>
-                ";
-        }
-
-        $actualTrays .= "
-                <h3 class='flex1 itemsCentered'>Actual Trays</h3>
-                <div class='listContainer'>
-                    <div class='listContainer'>
-                        <div class='listRow header' >
-                            <div class='nameColumn'>ID</div>
-                            <div class='nameColumn'>Original ID</div>
-                            <div class='nameColumn'>Tray Type</div>
-                        </div>
-                    </div>
-            ";
-        if(count($this->model->trays)>0) {
-            
-            foreach ($this->model->trays as $tray) {
-                # code...
-                $actualTrays.= "<div class='listRow odd' >
-                    <div class='nameColumn'>".$tray->id."</div>
-                    <div class='nameColumn'>".$tray->originalId."</div>
-                    <div class='nameColumn'>".$tray->typeId."</div>
-                </div>";
-            }
-            $actualTrays.="</div>";
-        } else {
-            $actualTrays.="<div class='listContainer'>
-                        <div class='flex1 itemsCentered'>No trays on the system for the provided operation!</div>
                     </div>
                 ";
         }
