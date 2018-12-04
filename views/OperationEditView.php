@@ -16,9 +16,7 @@ class OperationEditView implements View
         //$view = file_get_contents('./views/OperationEditRender.php');
         //echo $view;
         //return json_encode($this->model);
-        $expectedTrays = "";
-        if (property_exists($this->model, 'expectedTrays') && count($this->model->expectedTrays)>0) {
-            $expectedTrays .= "
+        $expectedTrays .= "
                 <h3 class='flex1 itemsCentered'>Expected Trays</h3>
                 <div class='listContainer'>
                     <div class='listContainer'>
@@ -30,6 +28,7 @@ class OperationEditView implements View
                         </div>
                     </div>
             ";
+        if (property_exists($this->model, 'expectedTrays') && count($this->model->expectedTrays)>0) {
             foreach ($this->model->expectedTrays as $trayType) {
                 # code...
                 $expectedTrays.= "<div class='listRow odd' >
@@ -46,7 +45,13 @@ class OperationEditView implements View
                 </div>";
             }
             $expectedTrays.="</div>";
+        } else {
+            $expectedTrays.="<div class='listContainer'>
+                        <div class='flex1 itemsCentered'>No trays configuration on the system for the provided operation or you provided all the expected trays!</div>
+                    </div>
+                ";
         }
+
         $actualTrays .= "
                 <h3 class='flex1 itemsCentered'>Actual Trays</h3>
                 <div class='listContainer'>
