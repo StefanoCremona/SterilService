@@ -47,9 +47,7 @@ class OperationEditView implements View
             }
             $expectedTrays.="</div>";
         }
-        $actualTrays = "";
-        if(count($this->model->trays)>0) {
-            $actualTrays .= "
+        $actualTrays .= "
                 <h3 class='flex1 itemsCentered'>Actual Trays</h3>
                 <div class='listContainer'>
                     <div class='listContainer'>
@@ -60,6 +58,8 @@ class OperationEditView implements View
                         </div>
                     </div>
             ";
+        if(count($this->model->trays)>0) {
+            
             foreach ($this->model->trays as $tray) {
                 # code...
                 $actualTrays.= "<div class='listRow odd' >
@@ -69,6 +69,11 @@ class OperationEditView implements View
                 </div>";
             }
             $actualTrays.="</div>";
+        } else {
+            $actualTrays.="<div class='listContainer'>
+                        <div class='flex1 itemsCentered'>No trays on the system for the provided operation!</div>
+                    </div>
+                ";
         }
         
         echo "
