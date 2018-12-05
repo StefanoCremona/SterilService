@@ -52,10 +52,15 @@ class OperationEditView implements View
                     }
                 }
                 # code...
-                $actualTrays.= "<div class='listRow' >
+                $actualTrays.= "<div class='listRow subHeader' >
                     <div class='nameColumn'>".$tray->id."</div>
                     <div class='nameColumn'>".$tray->originalId."</div>
                     <div class='nameColumn'>".$tray->typeId."</div>
+                </div>";
+                $actualTrays.= "<div class='listRow Header' >
+                    <div class='nameColumn'>INSTRUMENT TYPE</div>
+                    <div class='nameColumn'>INSTRUMENT DESC</div>
+                    <div class='nameColumn'>EXPECTED NUMBER</div>
                 </div>";
                 foreach ($tray->expectedInstruments as $key => $instType) {
                     $actualTrays.= "<div class='listRow odd' >
