@@ -60,13 +60,15 @@ class OperationEditView implements View
                 $actualTrays.= "<div class='listRow Header' >
                     <div class='nameColumn'>INSTRUMENT TYPE</div>
                     <div class='nameColumn'>INSTRUMENT DESC</div>
-                    <div class='nameColumn'>EXPECTED NUMBER</div>
+                    <div class='flex05 itemsCentered'>EXPECTED NUMBER</div>
+                    <div class='flex05 itemsCentered'>ACTUAL NUMBER</div>
                 </div>";
                 foreach ($tray->expectedInstruments as $key => $instType) {
                     $actualTrays.= "<div class='listRow odd' >
                         <div class='nameColumn'>".$instType->code."</div>
                         <div class='nameColumn'>".$instType->desc."</div>
-                        <div class='nameColumn'>".$instType->num."</div>
+                        <div class='flex05 itemsCentered'>".$instType->num."</div>
+                        <div class='flex05 itemsCentered'><input type='text' /><input type='button' value='send'/></div>
                     </div>";
                 }
             }
