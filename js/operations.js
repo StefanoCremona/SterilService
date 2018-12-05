@@ -51,7 +51,6 @@ function populateList(operations) {
                     `<div class='nameColumn'>${operation.name}</div>`+
                     `<div class='typeColumn'>${operation.type}</div>`+
                     `<div class='dateColumn'>${operation.date}</div>`+
-                    `<div class='traysColumn'>${operation.trays}</div>`+
                 "</a>"+
             `<input type='hidden' name='operationId' value='${operation.id}'/>`+
             `<input type='hidden' name='operationName' value='${operation.name}'/>`+

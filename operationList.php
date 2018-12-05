@@ -16,7 +16,6 @@
             <div class='nameColumn'>Name</div>
             <div class='typeColumn'>Type</div>
             <div class='dateColumn'>Date</div>
-            <div class='traysColumn'>Trays</div>
         </div>
         <div id='listDataContainer'>
         </div>

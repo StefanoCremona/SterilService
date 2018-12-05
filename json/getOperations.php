@@ -11,7 +11,7 @@ $arr = array();
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
     while($row = mysqli_fetch_assoc($result)) {
-        array_push($arr, new Operation($row["id"], $row["name"], $row["type"], $row["dt_creation"], 5));
+        array_push($arr, new Operation($row["id"], $row["name"], $row["type"], $row["dt_creation"]));
     }
 } else {
     echo "0 results";

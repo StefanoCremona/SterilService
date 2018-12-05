@@ -15,13 +15,12 @@ class Operation
         } 
     }
     
-    function __construct5($id, $name, $type, $date, $trays)
+    function __construct4($id, $name, $type, $date)
     {
         $this->id = $id;
         $this->name = $name;
         $this->type = $type;
         $this->date = $date;
-        $this->trays = $trays;
     }
 
     function getExpectedTrays() {
@@ -71,7 +70,6 @@ class Operation
     public $name;
     public $type;
     public $date;
-    public $trays;
 }
 
 ?>

@@ -35,7 +35,7 @@ class Controller
 $view = new ErrorView();
 if (isset($_POST['action']) && !empty($_POST['action'])) {
 
-    $model = new Operation($_POST['operationId'], $_POST['operationName'], $_POST['operationType'], $_POST['operationDate'], 5 );
+    $model = new Operation($_POST['operationId'], $_POST['operationName'], $_POST['operationType'], $_POST['operationDate']);
     $controller = new Controller($model);
     $view = new OperationEditView($controller, $model);//here is the login
 
