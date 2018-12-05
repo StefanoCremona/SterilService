@@ -16,14 +16,12 @@ class InstrumentType
         $this->code = $code;
         $this->name = $name;
     }
-    function __construct6($id, $code, $name, $desc, $dtcreation, $dtannull)
+    function __construct4($id, $code, $name, $desc)
     {
         $this->id = $id;
         $this->code = $code;
         $this->name = $name;
         $this->desc = $desc;
-        $this->dtcreation = $dtcreation;
-        $this->dtannull = $dtannull;
     }
     
     public $id;

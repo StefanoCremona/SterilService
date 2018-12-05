@@ -25,14 +25,14 @@ class Tray
         $myDbHelper = new DBHelper();
         $conn = $myDbHelper->getConnection();
 
-        $sql = "SELECT instrument_type.ID, `CODE`, `DESC`, `INST_NUM` FROM `tray_conf`, `instrument_type` 
+        $sql = "SELECT instrument_type.ID, `CODE`, `NAME`, `DESC`, `INST_NUM` FROM `tray_conf`, `instrument_type` 
             WHERE  tray_conf.INSTRUMENT_TYPE = instrument_type.ID and tray_type = ".$this->typeId;
         $result = mysqli_query($conn, $sql);
         
         if (mysqli_num_rows($result) > 0) {
             // output data of each row
             while($row = mysqli_fetch_assoc($result)) {
-                $instType = new InstrumentType();
+                $instType = new InstrumentType($row["ID"], $row["CODE"], $row["NAME"], $row["DESC"]);
                 $instType->num = $row["INST_NUM"];
                 array_push($arr, $instType);
             }
