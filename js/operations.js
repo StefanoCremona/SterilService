@@ -48,11 +48,13 @@ function populateList(operations) {
             '<form id="form'+operation.id+'" method="POST" action="operationEdit.php">'+
                 `<a href='#' onclick='form${operation.id}.submit()' class='listRow ${color}'>`+
                     `<div class='idColumn'>${operation.id}</div>`+
+                    `<div class='idColumn'>${operation.originalId}</div>`+
                     `<div class='nameColumn'>${operation.name}</div>`+
                     `<div class='typeColumn'>${operation.type}</div>`+
                     `<div class='dateColumn'>${operation.date}</div>`+
                 "</a>"+
             `<input type='hidden' name='operationId' value='${operation.id}'/>`+
+            `<input type='hidden' name='originalId' value='${operation.originalId}'/>`+
             `<input type='hidden' name='operationName' value='${operation.name}'/>`+
             `<input type='hidden' name='operationType' value='${operation.type}'/>`+
             `<input type='hidden' name='operationDate' value='${operation.date}'/>`+
@@ -94,6 +96,7 @@ function populateOperationTypesList(operations) {
 }
 
 function saveOperation() {
+    const operationOriginalId = document.getElementById('operationOriginalId').value;
     const name = document.getElementById('operationName').value;
     const date = document.getElementById('operationDate').value;
     const time = document.getElementById('operationTime').value;
@@ -101,7 +104,7 @@ function saveOperation() {
     var selector = document.getElementById('operationType');
     var type = selector[selector.selectedIndex].value;
     //alert(time); return;
-    if (!name || type < 0 || !date || !time) {
+    if (!name || type < 0 || !date || !time || !operationOriginalId) {
         alert('Fill all the fields, Please!');
         return;    
     }
@@ -131,5 +134,5 @@ function saveOperation() {
     }
     xmlhttp.open("POST", "./json/saveOperation.php", true);
     xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xmlhttp.send("name="+name+"&type="+type+"&date="+date+" "+time);
+    xmlhttp.send("operationOriginalId="+operationOriginalId+"&name="+name+"&type="+type+"&date="+date+" "+time);
 }

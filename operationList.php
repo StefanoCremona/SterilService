@@ -13,6 +13,7 @@
     <div class='listContainer'>
         <div class='listRow header' >
             <div class='idColumn'>ID</div>
+            <div class='idColumn'>ORIGINAL ID</div>
             <div class='nameColumn'>Name</div>
             <div class='typeColumn'>Type</div>
             <div class='dateColumn'>Date</div>
@@ -23,6 +24,7 @@
     <h3 class='flex1 itemsCentered'>New Operation</h3>
     <div class='listContainer'>
         <div class='listRow header' >
+            <div class='nameColumn'>ORIGINAL ID</div>
             <div class='nameColumn'>Name</div>
             <div class='typeColumn'>Type</div>
             <div class='dateColumn'>Date</div>
@@ -32,6 +34,9 @@
     <div class='listContainer'>
         <form id="operationForm">
         <div class='horizontalAlign' >
+            <div class='nameColumn'>
+                <input class='flex1' type="text" id="operationOriginalId"/>
+            </div>
             <div class='nameColumn'>
                 <input class='flex1' type="text" id="operationName"/>
             </div>
