@@ -88,11 +88,9 @@ class OperationEditView implements View
                     <div class='nameColumn'>".$trayType->name."</div>
                     <div class='nameColumn'>".$trayType->num."</div>
                     <div class='nameColumn'>
-                        <form method='POST' action='operationEdit.php'>
-                            <input type='hidden' value='trayAdd' id='action' name='action' />
-                            <input placeholder='YOUR TRAY ID' type='text' id='trayId'/>
-                            <input type='submit' value='Associate Tray'/>
-                        </form>
+                        <input placeholder='YOUR TRAY ID' type='text' id='originalTrayId".$trayType->id."' name='originalTrayId'/>
+                        <input type='hidden' id='originalTrayType' name='originalTrayType' />
+                        <input type='button' value='Associate Tray' onClick=\"saveTray(".$this->model->id.", ".$trayType->id.", document.getElementById('originalTrayId".$trayType->id."').value)\"/>
                     </div>
                 </div>";
             }
