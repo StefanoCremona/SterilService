@@ -1,4 +1,5 @@
 <?php
+include_once './models/instrumentType.php';
 class Tray
 {
     function __construct() 
@@ -16,6 +17,30 @@ class Tray
         $this->originalId = $originalId;
         $this->procedureId = $procedureId;
         $this->typeId = $typeId;
+    }
+
+    function getExpectedInstruments() {
+        $arr = array();
+        
+        $myDbHelper = new DBHelper();
+        $conn = $myDbHelper->getConnection();
+
+        $sql = "SELECT instrument_type.ID, `CODE`, `DESC`, `INST_NUM` FROM `tray_conf`, `instrument_type` 
+            WHERE  tray_conf.INSTRUMENT_TYPE = instrument_type.ID and tray_type = ".$this->typeId;
+        $result = mysqli_query($conn, $sql);
+        
+        if (mysqli_num_rows($result) > 0) {
+            // output data of each row
+            while($row = mysqli_fetch_assoc($result)) {
+                $instType = new InstrumentType();
+                $instType->num = $row["INST_NUM"];
+                array_push($arr, $instType);
+            }
+        }
+
+        $myDbHelper->closeConnection();
+
+        return $arr;
     }
 
     public $id;

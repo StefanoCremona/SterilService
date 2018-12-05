@@ -21,6 +21,9 @@ class Controller
     public function operationShow() {
         $this->model->expectedTrays = $this->model->getExpectedTrays();
         $this->model->trays = $this->model->getTrays();
+        foreach ($this->model->trays as $key => $tray) {
+            $tray->expectedInstruments = $tray->getExpectedInstruments();
+        }
         //return new OperationsListView($this, $model);
     }
 
