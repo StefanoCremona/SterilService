@@ -113,7 +113,15 @@ a:active {
     display: flex;
     flex: 0.5;
 }
-
+.error {
+    display: flex;
+    justify-content: center;
+    align-items: 'center';
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    width: 18px
+}
 .itemsCentered {
     display: flex;
     justify-content: center;

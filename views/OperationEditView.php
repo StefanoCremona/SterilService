@@ -72,9 +72,14 @@ class OperationEditView implements View
                             break;
                         }
                     }
-                    $actualNumber = $instNumber != 0 ? $instNumber : "
-                        <input type='text' id='".$tray->id.$instType->id."'/>
-                        <input onClick='saveInstruments(".$tray->id.", ".$instType->id.", Number(document.getElementById(".$tray->id.$instType->id.").value))' type='button' value='send'/>";
+                    //display the actual instrument number or the form to input them
+                    if ($instNumber != 0) {
+                        $class = $instNumber != $instType->num ? "class='error'" : "";
+                        $actualNumber = "<div ".$class.">".$instNumber."</div>";
+                    } else {
+                        $actualNumber = "<input type='text' id='".$tray->id.$instType->id."'/>
+                                    <input onClick='saveInstruments(".$tray->id.", ".$instType->id.", Number(document.getElementById(".$tray->id.$instType->id.").value))' type='button' value='send'/>";
+                    }
                     $actualTrays.= "<div class='listRow odd' >
                         <div class='nameColumn'>".$instType->id."</div>
                         <div class='nameColumn'>".$instType->desc."</div>
