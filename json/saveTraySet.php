@@ -17,7 +17,7 @@ $conn = $myDbHelper->getConnection();
 $stmt = mysqli_stmt_init($conn);
 $query = "INSERT INTO `tray_set` (`TRAY_ID`, `INST_TYPE`, `INST_NUM`) VALUES (?, ?, ?)";
 mysqli_stmt_prepare($stmt, $query) or die(json_encode(new Message(false, 'Failed to prepare statement:'.mysqli_stmt_error($stmt))));
-mysqli_stmt_bind_param($stmt, 'iii', $instTypeId, $trayId, $instNumber) or die(json_encode(new Message(false, 'Failed to bind variables:'.mysqli_stmt_error($stmt))));
+mysqli_stmt_bind_param($stmt, 'iii', $trayId, $instTypeId, $instNumber) or die(json_encode(new Message(false, 'Failed to bind variables:'.mysqli_stmt_error($stmt))));
 mysqli_stmt_execute($stmt) or die(json_encode(new Message(false, 'Failed to execute statement:'.mysqli_stmt_error($stmt))));
 
 echo json_encode(new Message(true, 'Operation successful!'));
