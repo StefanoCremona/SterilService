@@ -65,7 +65,7 @@ class OperationEditView implements View
                     <div class='flex05 itemsCentered'>ACTUAL NUMBER</div>
                 </div>";
                 foreach ($tray->expectedInstruments as $key => $instType) {
-                    $instNumber = count($tray->actualInstruments);
+                    $instNumber = 0;
                     foreach($tray->actualInstruments as $key => $actualInstType) {
                         if ($actualInstType->id == $instType->id) {
                             $instNumber = $actualInstType->num;

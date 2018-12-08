@@ -27,6 +27,7 @@ class Tray
 
         $sql = "SELECT `TRAY_ID`, `INST_TYPE`, `INST_NUM` FROM `tray_set`
             WHERE TRAY_ID = ".$this->id;
+
         $result = mysqli_query($conn, $sql);
         
         if (mysqli_num_rows($result) > 0) {
