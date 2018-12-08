@@ -19,6 +19,30 @@ class Tray
         $this->typeId = $typeId;
     }
 
+    function getActualInstruments() {
+        $arr = array();
+        
+        $myDbHelper = new DBHelper();
+        $conn = $myDbHelper->getConnection();
+
+        $sql = "SELECT `TRAY_ID`, `INST_TYPE`, `INST_NUM` FROM `tray_set`
+            WHERE TRAY_ID = ".$this->Id;
+        $result = mysqli_query($conn, $sql);
+        
+        if (mysqli_num_rows($result) > 0) {
+            // output data of each row
+            while($row = mysqli_fetch_assoc($result)) {
+                $instType = new InstrumentType($row["ID"]);
+                $instType->num = $row["INST_NUM"];
+                array_push($arr, $instType);
+            }
+        }
+
+        $myDbHelper->closeConnection();
+
+        return $arr;
+    }
+
     function getExpectedInstruments() {
         $arr = array();
         

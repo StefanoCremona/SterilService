@@ -9,6 +9,11 @@ class InstrumentType
             call_user_func_array(array($this,$f),$a); 
         } 
     }
+
+    function __construct1($id)
+    {
+        $this->id = $id;
+    }
     
     function __construct3($id, $code, $name)
     {

@@ -23,6 +23,7 @@ class Controller
         $this->model->trays = $this->model->getTrays();
         foreach ($this->model->trays as $key => $tray) {
             $tray->expectedInstruments = $tray->getExpectedInstruments();
+            $tray->actualInstruments = $tray->getActualInstruments();
         }
         //return new OperationsListView($this, $model);
     }
