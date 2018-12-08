@@ -65,10 +65,10 @@ class OperationEditView implements View
                 </div>";
                 foreach ($tray->expectedInstruments as $key => $instType) {
                     $actualTrays.= "<div class='listRow odd' >
-                        <div class='nameColumn'>".$instType->code."</div>
+                        <div class='nameColumn'>".$instType->id."</div>
                         <div class='nameColumn'>".$instType->desc."</div>
                         <div class='flex05 itemsCentered'>".$instType->num."</div>
-                        <div class='flex05 itemsCentered'><input type='text' /><input type='button' value='send'/></div>
+                        <div class='flex05 itemsCentered'><input type='text' id='".$tray->id.$instType->id."'/><input onClick='saveInstruments(".$tray->id.", ".$instType->id.", Number(document.getElementById(".$tray->id.$instType->id.").value))' type='button' value='send'/></div>
                     </div>";
                 }
             }
@@ -104,7 +104,7 @@ class OperationEditView implements View
                     <div class='nameColumn'>
                         <input placeholder='YOUR TRAY ID' type='text' id='originalTrayId".$trayType->id."' name='originalTrayId'/>
                         <input type='hidden' id='originalTrayType' name='originalTrayType' />
-                        <input type='button' value='Associate Tray' onClick=\"saveTray(".$this->model->id.", ".$trayType->id.", document.getElementById('originalTrayId".$trayType->id."').value)\"/>
+                        <input type='button' value='Associate Tray' onClick=\"associateTray(".$this->model->id.", ".$trayType->id.", document.getElementById('originalTrayId".$trayType->id."').value)\"/>
                     </div>
                 </div>";
             }

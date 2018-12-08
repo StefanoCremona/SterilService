@@ -7,13 +7,19 @@ function hideSpinner() {
     }, 500);
 }
 
-function saveTray(operationId, trayTypeId, originalId) {
+function saveInstruments(trayId, instTypeId, instNumber) {
+    showSpinner();
+    console.log(trayId, instTypeId, instNumber);
+    hideSpinner();
+}
+
+function associateTray(operationId, trayTypeId, originalId) {
     
     if (!operationId || !trayTypeId || !originalId) {
         alert('Fill all the fields, Please!');
         return;    
     }
-    showSpinner()
+    showSpinner();
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4) {
