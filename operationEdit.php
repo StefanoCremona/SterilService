@@ -47,4 +47,5 @@ if (isset($_POST['action']) && !empty($_POST['action'])) {
 }
 
 echo $view->output();
+//echo json_encode($model->trays);
 ?>

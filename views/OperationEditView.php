@@ -38,6 +38,7 @@ class OperationEditView implements View
 
         if(count($this->model->trays)>0) {
             
+            //Check the actual trays with the exepected ones
             foreach ($this->model->trays as $tray) {
                 //Remove the suggested tray which  matches the actual one
                 foreach ($expectedTraysFiltered as $key => $expTray) {
@@ -64,12 +65,24 @@ class OperationEditView implements View
                     <div class='flex05 itemsCentered'>ACTUAL NUMBER</div>
                 </div>";
                 foreach ($tray->expectedInstruments as $key => $instType) {
+                    $instNumber = count($tray->actualInstruments);
+                    foreach($tray->actualInstruments as $key => $actualInstType) {
+                        if ($actualInstType->id == $instType->id) {
+                            $instNumber = $actualInstType->num;
+                            break;
+                        }
+                    }
+                    $actualNumber = $instNumber != 0 ? $instNumber : "
+                        <input type='text' id='".$tray->id.$instType->id."'/>
+                        <input onClick='saveInstruments(".$tray->id.", ".$instType->id.", Number(document.getElementById(".$tray->id.$instType->id.").value))' type='button' value='send'/>";
                     $actualTrays.= "<div class='listRow odd' >
                         <div class='nameColumn'>".$instType->id."</div>
                         <div class='nameColumn'>".$instType->desc."</div>
                         <div class='flex05 itemsCentered'>".$instType->num."</div>
-                        <div class='flex05 itemsCentered'><input type='text' id='".$tray->id.$instType->id."'/><input onClick='saveInstruments(".$tray->id.", ".$instType->id.", Number(document.getElementById(".$tray->id.$instType->id.").value))' type='button' value='send'/></div>
-                    </div>";
+                            <div class='flex05 itemsCentered'>".
+                            $actualNumber
+                            ."</div>
+                        </div>";
                 }
             }
             $actualTrays.="</div>";
